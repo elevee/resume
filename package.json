@@ -1,0 +1,21 @@
+{
+  "name": "resume",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js' --directory --port 7777 --browser 'google chrome'",
+    "build": "babel src -d lib",
+    "watch": "watchify src/index.js -o lib/bundle.js"
+  },
+  "author": "Eric Levine",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-cli": "^6.26.0",
+    "gulp": "^4.0.0"
+  },
+  "dependencies": {}
+}

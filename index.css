@@ -1,0 +1,214 @@
+:root {
+    --accent:           #f45042;
+    --grid-separator:   #dbdbdb;
+}
+
+/* @media print { 
+  * {
+    -webkit-transition: none !important;
+    transition: none !important;
+  }
+} */
+
+body {
+    margin: 40px;
+    font-family: "Adobe Caslon Pro", "Minion Pro", serif;
+    font-size: 12pt;
+}
+
+header {
+    font-family: "Trajan Pro", serif;
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 20pt;
+    letter-spacing: 2pt;
+    border-bottom: 1px solid var(--accent);
+    margin-bottom: 4px;
+}
+
+header span {
+    font-size: 10pt;
+}
+
+header span.gc-cs-link { /* extra styling for Google Voice extension auto highlighting */
+    text-decoration: none;
+    color: black;
+}
+
+section h2 {
+    font-family: "Trajan Pro", serif;
+    font-size: 14pt;
+}
+
+section h2, .role, {
+    text-transform: uppercase;
+}
+
+section .role {
+    font-size: 14pt;
+    /*margin-left: 10px;*/
+}
+
+section p {
+    margin-left: 40px;
+}
+
+section.coverletter {
+    margin-top: 40px;
+}
+
+section.coverletter p {
+    margin-left: 0px;
+}
+
+ul {
+    list-style-type: square;
+    color: var(--accent);
+    margin: 0px 10px;
+}
+
+ul.nobullets {
+    list-style-type: none;
+}
+
+li span {
+    color: black;
+}
+
+.bold {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.divtable {
+    display: table;
+    margin-left: 20px;
+    width: 100%;
+}
+
+section {
+    margin-left: 10px;
+    margin-bottom: 5px;
+    /*background-color: yellow;*/
+}
+
+.job:not(:first-child) {
+    margin-bottom: 10px;
+}
+
+#skills_grid {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 120px 80px;
+    /* grid-gap: 20px; */
+    grid-template-areas: 
+        "backend frontend"
+        "media interests";
+    justify-items: start;
+    /* justify-content: space-around; */
+    align-items: end;
+    /* border: 10px solid black; */
+    
+    /* margin: 0 auto; */
+}
+
+#quad1, #quad3 {
+    justify-self: end;
+}
+
+#quad3, #quad4 {
+    align-self: start;
+}
+
+#skills_grid ul {
+    font-size: 12px;
+    padding: 0px;
+    list-style-position: inside;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    /* -webkit-column-width: 20px;
+    -moz-column-width: 20px;
+    column-width: 20px; */
+}
+
+#skills_grid .label {
+    position: absolute;
+    text-transform: uppercase;
+    color: var(--grid-separator);
+}
+
+#quad1 .label, #quad2 .label {
+    top: 0;
+}
+
+#quad3 .label, #quad4 .label {
+    bottom: 0px;
+}
+
+#quad1 .label, #quad3 .label {
+    left: 0;
+}
+
+#quad2 .label, #quad4 .label {
+    right: 0;
+}
+
+#quad1, #quad3 {
+    border-right: 3px solid var(--grid-separator);
+}
+
+#quad1, #quad2 {
+    border-bottom: 3px solid var(--grid-separator);
+    vertical-align: bottom;
+    /*flex-wrap: wrap;*/
+}
+
+.table {
+    display: table;
+    margin-left: 20px;
+}
+
+.tablerow {
+    display: table-row;
+}
+
+.right {
+    display: table-cell;
+    text-align: right;
+    font-style: italic;
+    /*width: 50%;*/
+}
+
+.company {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.location {
+    font-style: italic;
+    margin-left: 10px;
+}
+
+.cell {
+    display: table-cell;
+}
+
+.onlinecell {
+    font-style: italic;
+    padding-right: 10px;
+}
+
+.urlcell {
+    display: table-cell;
+    letter-spacing: 1px;
+}
+
+.pagebreak {
+    page-break-before: always;
+}
