@@ -24,7 +24,8 @@ header {
 }
 
 header h1 {
-    font-size: 20pt;
+    font-family: 'Playfair Display SC';
+    font-size: 40pt;
     letter-spacing: 2pt;
     border-bottom: 1px solid var(--accent);
     margin-bottom: 4px;
