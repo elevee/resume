@@ -11,11 +11,13 @@
   "author": "Eric Levine",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
+    "@babel/cli": "^7.12.17",
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "babel-cli": "^6.26.0",
-    "gulp": "^4.0.0"
+    "browser-sync": "2.26.14",
+    "gulp": "^4.0.0",
+    "watchify": "^4.0.0"
   },
   "dependencies": {}
 }
