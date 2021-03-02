@@ -43,6 +43,7 @@ header span.gc-cs-link { /* extra styling for Google Voice extension auto highli
 section h2 {
     font-family: "Trajan Pro", serif;
     font-size: 14pt;
+    margin-bottom: 0px;
 }
 
 section h2, .role, {
@@ -105,17 +106,13 @@ section {
     display: grid;
     position: relative;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 120px 80px;
+    grid-template-rows: 100px 80px;
     /* grid-gap: 20px; */
     grid-template-areas: 
         "backend frontend"
         "media interests";
     justify-items: start;
-    /* justify-content: space-around; */
     align-items: end;
-    /* border: 10px solid black; */
-    
-    /* margin: 0 auto; */
 }
 
 #quad1, #quad3 {
@@ -134,14 +131,18 @@ section {
     -webkit-columns: 2;
     -moz-columns: 2;
     /* -webkit-column-width: 20px;
-    -moz-column-width: 20px;
-    column-width: 20px; */
+    -moz-column-width: 20px; */
+    /* column-width: 200px;  */
+    width: 350px;
+    /* align-content: stretch; */
+    
 }
 
 #skills_grid .label {
     position: absolute;
     text-transform: uppercase;
-    color: var(--grid-separator);
+    color: var(--accent);
+    margin-bottom: 0px;
 }
 
 #quad1 .label, #quad2 .label {
@@ -167,7 +168,6 @@ section {
 #quad1, #quad2 {
     border-bottom: 3px solid var(--grid-separator);
     vertical-align: bottom;
-    /*flex-wrap: wrap;*/
 }
 
 .table {
