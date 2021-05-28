@@ -1,4 +1,8 @@
-const data = require('./sample.js');
+const isCoverLetter = false;
+
+const data = require('./resumes/eric_m_levine.js');
+
+const showGithub = true;
 
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementsByTagName("TITLE")[0].innerText = data.header.name;
@@ -6,15 +10,22 @@ document.addEventListener("DOMContentLoaded", function() {
   //HEADER
   function drawHeader(_header){
       const header = document.getElementsByTagName("HEADER")[0];
-      let html = `<h1>${_header.name}</h1>`;
-      html += `<span>${_header.address} &bull; ${_header.city}, ${_header.state} &bull; ${_header.phone} &bull; ${_header.email}</span>`;
+      const {address, email, city, name, phone, state} = _header;
+      let html = `<h1>${name}</h1>`;
+      html += `<span class='address'>${address} &bull; ${city}, ${state} &bull; ${phone} &bull; ${email}</span>`;
       header.insertAdjacentHTML('beforeend', html);
   }
 
   drawHeader(data.header);
 
-  //SKILLS GRID
-  function drawSkillsGrid(gridData){
+  if(isCoverLetter){
+    const dateString = new Date().toLocaleDateString('en-US');
+    const html = `<div class='row'><span class='date'>${dateString}</span></div>`;
+    document.getElementsByTagName('header')[0].insertAdjacentHTML('afterend', html);
+  }
+
+//SKILLS GRID
+function drawSkillsGrid(gridData){
     let html      = "";
     if(gridData){
         html += "<section id='skills_grid'>";
@@ -35,15 +46,27 @@ document.addEventListener("DOMContentLoaded", function() {
         html += "</section>";
     }
     return html;
-  }
-  
-  //EXPERIENCE SECTION
-  function drawExperience(experience){
+}
+
+//EXPERIENCE SECTION
+function drawExperience(experience){
     let html      = "";
+    let role      = null;
     if(experience){
+        if(showGithub){
+            html += `
+            <div class='github'>
+                <img src='img/octocat.png' />
+                <span><span id='githubUsername'>elevee</span></span>
+            </div>
+            `;
+        }
         experience.forEach(item => {
             html += "<section>";
-                html += `<span class='role'>${item.role}</span>`;
+                if(item.role !== role){
+                    html += `<span class='role'>${item.role}</span>`;
+                    role = item.role;
+                }
                 html += "<div class='divtable'><div class='tablerow'>";
                     html += `<span class='company'>${item.company}</span><span class='location'>${item.location}</span><span class='right'>${item.dates}</span>`;
                 html += "</div></div>";
@@ -53,10 +76,10 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
     return html;
-  }
+}
 
-  //EDUCATION SECTION
-  function drawEducation(education){
+//EDUCATION SECTION
+function drawEducation(education){
     let html      = "";
     if(education){
         education.forEach(item => {
@@ -71,9 +94,9 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
     return html;
-  }
+}
 
-  function renderBullets(bullets){
+function renderBullets(bullets){
     let html = "";
     if(bullets && bullets.length > 0){
         html += "<ul>";
@@ -83,13 +106,14 @@ document.addEventListener("DOMContentLoaded", function() {
         html += "</ul>";
     }
     return html;
-  }
+}
 
-  function renderSection(section){
-    // console.log(section);
+function renderSection(section){
     const body    = document.getElementsByTagName("BODY")[0];
     let html = `<section id='${section.label.toLowerCase()}'>`;
-        html += `<h2>${section.label}</h2>`;
+        if (!isCoverLetter) {
+            html += `<h2>${section.label}</h2>`;
+        }
         switch(section.label){
             case "Skills":
                 if(section.grid && section.grid.length > 0){
@@ -106,17 +130,46 @@ document.addEventListener("DOMContentLoaded", function() {
                     html += drawEducation(section.items);
                 }
                 break;
+            case "Cover Letter":
+                if(section.letter?.body && section.letter.body.length > 0){
+                    html += drawCoverLetter(section);
+                }
+                break;
         }
     html += `</section>`;
     // console.log(html);
     body.insertAdjacentHTML('beforeend', html);
-  }
+}
 
-  if(data && data.sections){
+if(data && data.sections){
     const body    = document.getElementsByTagName("BODY")[0];
-    data.sections.forEach(section => {
+    let renderableSections;
+    if(isCoverLetter){
+        renderableSections = data.sections.filter(section => section.label === 'Cover Letter');  
+    } else {
+        renderableSections = data.sections.filter(section => section.label !== 'Cover Letter');
+    }
+    renderableSections.forEach(section => {
         renderSection(section);
     })
     body.insertAdjacentHTML('beforeend', "<div class='pagebreak'></div>");
-  }
+}
+
+function drawCoverLetter(section) {
+    const {body, salutation, valediction} = section.letter;
+    let html = "";
+    if(salutation){
+        html += `<p id='salutation'>${salutation}</p>`;
+    }
+    if(body){
+        body.forEach(paragraph => html += `<p>${paragraph}</p>`);
+    }
+    if(valediction){
+        html += `<p id='valediction'>${valediction}</p>`;
+        html += `<img src='img/signature.png' id='signature' />`;
+        html += `<p id='printedName'>Eric Levine</p>`;
+    }
+    return html;
+}
+
 });

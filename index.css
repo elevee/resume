@@ -1,6 +1,12 @@
+/* @font-face {
+    font-family: 'Baskervville';
+    src: url('./fonts/Baskervville-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+/* }  */
+
 :root {
     --accent:           #f45042;
     --grid-separator:   #dbdbdb;
+    --top-margin:       10px;
 }
 
 /* @media print { 
@@ -11,8 +17,9 @@
 } */
 
 body {
-    margin: 40px;
-    font-family: "Adobe Caslon Pro", "Minion Pro", serif;
+    margin: 0px 40px;
+    /* font-family: "Adobe Caslon Pro", "Minion Pro", serif; */
+    font-family: "Baskervville", "Minion Pro", serif;
     font-size: 12pt;
 }
 
@@ -29,10 +36,13 @@ header h1 {
     letter-spacing: 2pt;
     border-bottom: 1px solid var(--accent);
     margin-bottom: 4px;
+    margin-top: var(--top-margin);
 }
 
 header span {
-    font-size: 10pt;
+    font-family: "Baskervville";
+    font-weight: bold;
+    font-size: 12pt;
 }
 
 header span.gc-cs-link { /* extra styling for Google Voice extension auto highlighting */
@@ -42,7 +52,8 @@ header span.gc-cs-link { /* extra styling for Google Voice extension auto highli
 
 section h2 {
     font-family: "Trajan Pro", serif;
-    font-size: 14pt;
+    text-transform: uppercase;
+    font-size: 12pt;
     margin-bottom: 0px;
 }
 
@@ -51,20 +62,17 @@ section h2, .role, {
 }
 
 section .role {
-    font-size: 14pt;
-    /*margin-left: 10px;*/
+    font-size: 11pt;
+    font-family: "Baskervville";
+    text-transform: uppercase;
 }
 
 section p {
-    margin-left: 40px;
+    /* margin-left: 40px; */
 }
 
-section.coverletter {
-    margin-top: 40px;
-}
-
-section.coverletter p {
-    margin-left: 0px;
+section[id="cover letter"] {
+    margin-top: 80px;
 }
 
 ul {
@@ -111,12 +119,16 @@ section {
     grid-template-areas: 
         "backend frontend"
         "media interests";
-    justify-items: start;
-    align-items: end;
+    justify-items: middle;
+    align-items: middle;
 }
 
 #quad1, #quad3 {
     justify-self: end;
+}
+
+#quad1, #quad2 {
+    align-self: end;
 }
 
 #quad3, #quad4 {
@@ -124,7 +136,7 @@ section {
 }
 
 #skills_grid ul {
-    font-size: 12px;
+    font-size: 11px;
     padding: 0px;
     list-style-position: inside;
     columns: 2;
@@ -140,6 +152,7 @@ section {
 
 #skills_grid .label {
     position: absolute;
+    font-family: 'Baskervville';
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 0px;
@@ -186,9 +199,32 @@ section {
     /*width: 50%;*/
 }
 
+.github {
+    position: absolute;
+    top: 0;
+    right: 38px;
+    font-family: "Baskervville";
+    font-size: 24px;
+    color: var(--grid-separator)
+}
+
+.github img {
+    width: 32px;
+    vertical-align: top;
+    transform: translateX(8px);
+    opacity: 0.5;
+}
+
+#githubUsername {
+    color: var(--accent);
+    opacity: 0.5;
+}
+
 .company {
+    font-family: 'Baskervville';
     font-style: italic;
     font-weight: bold;
+    font-size: 18px;
 }
 
 .location {
@@ -212,4 +248,27 @@ section {
 
 .pagebreak {
     page-break-before: always;
+}
+
+#salutation {
+    margin-bottom: 30px;
+}
+
+.row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.date {
+    margin-top: 30px;
+}
+
+#valediction {
+    margin-top: 40px;
+}
+
+
+#signature {
+    width: 150px;
+    /* margin-left: 35px; */
 }
