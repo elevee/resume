@@ -2,4 +2,8 @@
 .DS_Store
 
 src/_*.js
+src/resumes
+
 lib/
+
+img/signature.png
