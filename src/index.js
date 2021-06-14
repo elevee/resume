@@ -4,6 +4,8 @@ const data = require('./resumes/eric_m_levine.js');
 
 const showGithub = true;
 
+const pageBreakHtml = "<div class='pagebreak'></div>";
+
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementsByTagName("TITLE")[0].innerText = data.header.name;
 
@@ -35,11 +37,9 @@ function drawSkillsGrid(gridData){
                     html += `<div class='label'>${quadrant.label}</div>`;
                     html += "<ul>";
                     quadrant.skills.forEach(skill => {
-                        // console.log(skill);
                         html += `<li><span>${skill}</span></li>`;
                     });
                     html += "</ul>";
-                    // console.log(html);
                 html += "</div>";
             }
         });
@@ -71,7 +71,6 @@ function drawExperience(experience){
                     html += `<span class='company'>${item.company}</span><span class='location'>${item.location}</span><span class='right'>${item.dates}</span>`;
                 html += "</div></div>";
                 html += item.bullets && item.bullets.length > 0 ? renderBullets(item.bullets) : "";
-                // console.log(html);
             html += "</section>";
         });
     }
@@ -89,8 +88,8 @@ function drawEducation(education){
                 html += `<span class='right'>${item.dates}</span>`;
                 html += "</div></div>";
                 html += item.bullets && item.bullets.length > 0 ? renderBullets(item.bullets) : "";
-                // console.log(html);
             html += "</section>";
+            html += item.pageBreakAfter ? pageBreakHtml : '';
         });
     }
     return html;
@@ -137,7 +136,6 @@ function renderSection(section){
                 break;
         }
     html += `</section>`;
-    // console.log(html);
     body.insertAdjacentHTML('beforeend', html);
 }
 
@@ -152,7 +150,7 @@ if(data && data.sections){
     renderableSections.forEach(section => {
         renderSection(section);
     })
-    body.insertAdjacentHTML('beforeend', "<div class='pagebreak'></div>");
+    body.insertAdjacentHTML('beforeend', pageBreakHtml);
 }
 
 function drawCoverLetter(section) {

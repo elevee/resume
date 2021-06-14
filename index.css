@@ -3,18 +3,17 @@
     src: url('./fonts/Baskervville-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
 /* }  */
 
+@page {
+    size: 8.5in 11in;
+    margin: 0.5cm;
+}
+
 :root {
     --accent:           #f45042;
     --grid-separator:   #dbdbdb;
     --top-margin:       10px;
 }
 
-/* @media print { 
-  * {
-    -webkit-transition: none !important;
-    transition: none !important;
-  }
-} */
 
 body {
     margin: 0px 40px;
@@ -113,6 +112,7 @@ section {
 #skills_grid {
     display: grid;
     position: relative;
+    padding: 15px 0px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 100px 80px;
     /* grid-gap: 20px; */
@@ -142,11 +142,7 @@ section {
     columns: 2;
     -webkit-columns: 2;
     -moz-columns: 2;
-    /* -webkit-column-width: 20px;
-    -moz-column-width: 20px; */
-    /* column-width: 200px;  */
     width: 350px;
-    /* align-content: stretch; */
     
 }
 
@@ -196,7 +192,6 @@ section {
     display: table-cell;
     text-align: right;
     font-style: italic;
-    /*width: 50%;*/
 }
 
 .github {
